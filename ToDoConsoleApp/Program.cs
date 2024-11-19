@@ -10,10 +10,11 @@ namespace ToDoConsoleApp
             dynamicArray.Add("Apple");
             dynamicArray.Add("Lemon");
             dynamicArray.Add("Car");
+            dynamicArray.Add("Juice");
             dynamicArray.Add("Juce");
 
-            dynamicArray.Insert(2, "Kids");
-            dynamicArray.delete("Apple");
+           dynamicArray.Insert(2, "Kids");
+           //dynamicArray.delete("Apple");
 
 
 

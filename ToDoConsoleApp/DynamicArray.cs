@@ -9,8 +9,8 @@ namespace ToDoConsoleApp
     internal class DynamicArray
     {
         public int size = 0;
-        public int capacity = 10;
-        string[] array = new string[10];
+        public int capacity = 5;
+        string[] array = new string[5];
 
 
 
@@ -35,12 +35,14 @@ namespace ToDoConsoleApp
             {
                 for (int i = size; i > index; i--)
                 {
-                    array[i] = array[i-1];
-                    array[i-1] = null;
+                    array[i] = array[i - 1];
+
                 }
+                array[index] = data.ToLower();
+                size++;
+                return;
             }
-            array[index] = data;
-            size++;
+            array[index] = data.ToLower();
         }
 
         public void delete(string data)
@@ -83,7 +85,15 @@ namespace ToDoConsoleApp
 
         private void grow()
         {
+            int newCapacity = (int)(capacity * 2);
+            string[] tempArray = new string[newCapacity];
 
+            for (int i = 0; i < size; i++)
+            {
+                tempArray[i] = array[i];
+            }
+            capacity = newCapacity;
+            array = tempArray;
         }
 
         private void shrink() { 
@@ -113,6 +123,7 @@ namespace ToDoConsoleApp
             }
             return String;
         }
+
 
     }
 }
