@@ -11,14 +11,14 @@ namespace ToDoConsoleApp
             dynamicArray.Add("Lemon");
             dynamicArray.Add("Car");
             dynamicArray.Add("Juice");
-            dynamicArray.Add("Juce");
+            dynamicArray.Add("Juces");
 
            //dynamicArray.Insert(2, "Kids");
            //dynamicArray.delete("Apple");
            //dynamicArray.delete("Lemon");
            //dynamicArray.delete("Kids");
            //dynamicArray.delete("caR");
-           //dynamicArray.delete("JuCe");
+           //dynamicArray.delete("JuCeS");
 
 
 
