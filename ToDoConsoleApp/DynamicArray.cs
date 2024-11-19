@@ -31,8 +31,7 @@ namespace ToDoConsoleApp
             {
                 grow();
             }
-            else if (array[index] != null)
-            {
+            
                 for (int i = size; i > index; i--)
                 {
                     array[i] = array[i - 1];
@@ -40,9 +39,8 @@ namespace ToDoConsoleApp
                 }
                 array[index] = data.ToLower();
                 size++;
-                return;
-            }
-            array[index] = data.ToLower();
+            
+            
         }
 
         public void delete(string data)
@@ -96,8 +94,16 @@ namespace ToDoConsoleApp
             array = tempArray;
         }
 
-        private void shrink() { 
-        
+        private void shrink() {
+            int newCapacity = (int)(capacity / 2);
+            string[] tempArray = new string[newCapacity];
+
+            for (int i = 0; i < size; i++)
+            {
+                tempArray[i] = array[i];
+            }
+            capacity = newCapacity;
+            array = tempArray;
         }
 
         public bool thisEmpty()
