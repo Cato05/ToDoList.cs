@@ -7,20 +7,20 @@ namespace ToDoConsoleApp
         static void Main(string[] args)
         {
             DynamicArray dynamicArray = new DynamicArray();
-            dynamicArray.Add("Alma");
-            dynamicArray.Add("Körte");
-            dynamicArray.Add("Néma");
-            dynamicArray.Add("Béla");
+            dynamicArray.Add("Apple");
+            dynamicArray.Add("Lemon");
+            dynamicArray.Add("Car");
+            dynamicArray.Add("Juce");
 
-            dynamicArray.Insert(2, "Léta");
-            dynamicArray.delete("Alma");
+            dynamicArray.Insert(2, "Kids");
+            dynamicArray.delete("Apple");
 
 
 
             Console.WriteLine($"Elements: {dynamicArray.ListAll()}");
             Console.WriteLine($"Current size: {dynamicArray.size}");
             Console.WriteLine($"Current capacity: {dynamicArray.capacity}");
-            Console.WriteLine($"Alma is at {dynamicArray.search("Alma")}");
+            Console.WriteLine($"Car is at {dynamicArray.search("Car")}");
         }
     }
 }

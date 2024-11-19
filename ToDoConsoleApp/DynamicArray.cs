@@ -45,6 +45,7 @@ namespace ToDoConsoleApp
 
         public void delete(string data)
         {
+            data = data.ToLower();
             for (int i = 0; i < size; i++)
             {
                 if (array[i] == data)
@@ -54,12 +55,18 @@ namespace ToDoConsoleApp
                     {
                         array[j] = array[j+1];
                     }
-                    break;
+                    
                 }
-                
+                size--;
+                if (size <= (int)(capacity / 3))
+                {
+                    shrink();
+                }
+                break;
+
             }
 
-            size--;
+            
 
         }
 
