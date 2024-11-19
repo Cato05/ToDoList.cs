@@ -20,6 +20,7 @@ namespace ToDoConsoleApp
             Console.WriteLine($"Elements: {dynamicArray.ListAll()}");
             Console.WriteLine($"Current size: {dynamicArray.size}");
             Console.WriteLine($"Current capacity: {dynamicArray.capacity}");
+            Console.WriteLine($"Alma is at {dynamicArray.search("Alma")}");
         }
     }
 }

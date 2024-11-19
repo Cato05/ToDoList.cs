@@ -21,7 +21,7 @@ namespace ToDoConsoleApp
                 grow();
             }
             
-            array[size] = data;
+            array[size] = data.ToLower();
             size++;
         }
 
@@ -54,6 +54,7 @@ namespace ToDoConsoleApp
                     {
                         array[j] = array[j+1];
                     }
+                    break;
                 }
                 
             }
@@ -64,6 +65,12 @@ namespace ToDoConsoleApp
 
         public int search(string data) {
 
+            data = data.ToLower();
+            for (int i = 0; i < size; i++)
+            {
+                if (array[i] == data)
+                    return i;
+            }
             return -1;
         }
 
