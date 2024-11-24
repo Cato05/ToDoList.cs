@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Net;
 using System.Security.Cryptography.X509Certificates;
 namespace ToDoConsoleApp
 {
@@ -6,26 +7,49 @@ namespace ToDoConsoleApp
     {
         static void Main(string[] args)
         {
-            DynamicArray dynamicArray = new DynamicArray();
-            dynamicArray.Add("Apple");
-            dynamicArray.Add("Lemon");
-            dynamicArray.Add("Car");
-            dynamicArray.Add("Juice");
-            dynamicArray.Add("Juces");
+            Console.WriteLine("Welcome to your To-Do list!\n Navigate with arrows, press enter to mark a task completed!");
 
-           //dynamicArray.Insert(2, "Kids");
-           //dynamicArray.delete("Apple");
-           //dynamicArray.delete("Lemon");
-           //dynamicArray.delete("Kids");
-           //dynamicArray.delete("caR");
-           //dynamicArray.delete("JuCeS");
+            ConsoleKeyInfo key;
+            int option = 1;
+            bool done = false;
+            string marking = "\u001b[31m";
+            int max = 2; //The amount of tasks on the list
+            int min = 1; //If there are tasks, 1, otherwise 0
+            (int left, int top) = Console.GetCursorPosition();
+            while (!done)
+            {
+                Console.SetCursorPosition(left, top);
+
+                Console.WriteLine($" {(option == 1 ? marking : "")}Task 1\u001b[0m");
+                Console.WriteLine($" {(option == 2 ? marking : "")}Task 2\u001b[0m");
+
+                key = Console.ReadKey(true);
 
 
+                switch (key.Key)
+                {
+                    case ConsoleKey.UpArrow:
+                        option--;
+                        break;
 
-            Console.WriteLine($"Elements: {dynamicArray.ListAll()}");
-            Console.WriteLine($"Current size: {dynamicArray.size}");
-            Console.WriteLine($"Current capacity: {dynamicArray.capacity}");
-            Console.WriteLine($"Car is at {dynamicArray.search("Car")}");
+                     case ConsoleKey.DownArrow:
+                        option++;
+                        break;
+
+                    case ConsoleKey.Enter:
+                        //delete element
+                        break;
+
+                    case ConsoleKey.Escape:
+                        done = true;
+                        break;
+                }
+                
+                if (option < min)
+                    option = min;
+                else if (option > max)
+                    option = max;
+            }
         }
     }
 }
