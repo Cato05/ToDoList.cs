@@ -3,12 +3,14 @@ using System.Net;
 using System.Security.Cryptography.X509Certificates;
 namespace ToDoConsoleApp
 {
+
     internal class Program
     {
+        
         static void Main(string[] args)
         {
-            DynamicArray ToDoList = new DynamicArray();
 
+            DynamicArray ToDoList = new DynamicArray();
             Console.WriteLine("Welcome to your To-Do list!\n Navigate with arrows, press enter to select!");
 
             ConsoleKeyInfo key; 
@@ -40,7 +42,11 @@ namespace ToDoConsoleApp
 
                     case ConsoleKey.Enter:
                         if (option == 1)
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"Your current tasks are: {ToDoList.ListAll()}");
                             continue; //Go to the "task creator", pass for now
+                        }
                         else if (option == 2)
                             continue; //Go to list all the tasks, WIP as well
                         break;
