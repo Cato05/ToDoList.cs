@@ -12,7 +12,8 @@ namespace ToDoConsoleApp
 
             DynamicArray ToDoList = new DynamicArray();
             Console.WriteLine("Welcome to your To-Do list!\n Navigate with arrows, press enter to select!");
-
+            string ToDoFile = "../../../ToDo/To-DoList.txt";
+            StreamWriter sw = new StreamWriter(ToDoFile);
             ConsoleKeyInfo key; 
             int option = 1;
             bool done = false; //Checks if user is done with checking the list
@@ -43,12 +44,33 @@ namespace ToDoConsoleApp
                     case ConsoleKey.Enter:
                         if (option == 1)
                         {
+                            char answer = 'y';
+
                             Console.Clear();
                             Console.WriteLine($"Your current tasks are: {ToDoList.ListAll()}");
-                            continue; //Go to the "task creator", pass for now
+                            while (answer == 'y')
+                            {
+                                Console.WriteLine("Please type in what you want to add: ");
+                                string newTask = Convert.ToString(Console.ReadLine());
+                                ToDoList.Add(newTask);
+                                Console.WriteLine($"{newTask} has been succesfully added to your to-do list!\n Would you like to add something else? (y/n)");
+                                answer = Convert.ToChar(Console.ReadLine());
+                               
+                            }
+                            Console.Clear();
+                            //Iterate through the list with a for loop, write out everything from it, to a file, delete the toDoList array, so it saves up memory
+                            
+                            sw.Close();
+                            Console.WriteLine("Your To-Do List has been succesfully updated!");
+
+                            
                         }
                         else if (option == 2)
-                            continue; //Go to list all the tasks, WIP as well
+                        {
+                            Console.Clear();
+                            Console.WriteLine(ToDoList.ListAll()); 
+                        }
+                            
                         break;
 
                     case ConsoleKey.Escape:
