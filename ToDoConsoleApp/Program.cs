@@ -68,7 +68,7 @@ namespace ToDoConsoleApp
                         else if (option == 2)
                         {
                             Console.Clear();
-                            Console.WriteLine(ToDoList.ListAll()); 
+                            Console.WriteLine($"You're tasks are below: \n{ToDoList.ListAll()}"); 
                         }
                             
                         break;
