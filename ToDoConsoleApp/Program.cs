@@ -20,12 +20,14 @@ namespace ToDoConsoleApp
             string marking = "\u001b[31m"; //Marking color for the selection
             int max = 2; //The amount of tasks on the list
             int min = 1; //If there are tasks, 1, otherwise 0
-            (int left, int top) = Console.GetCursorPosition();
+            (int left, int bot) = Console.GetCursorPosition();
 
             while (!done)
             {
-                Console.SetCursorPosition(left, top);
+               
 
+                Thread.Sleep(100);
+                Console.SetCursorPosition(left, bot);
                 Console.WriteLine($" {(option == 1 ? marking : "")}Add a task\u001b[0m");
                 Console.WriteLine($" {(option == 2 ? marking : "")}See tasks\u001b[0m");
 
@@ -47,7 +49,7 @@ namespace ToDoConsoleApp
                             char answer = 'y';
 
                             Console.Clear();
-                            Console.WriteLine($"Your current tasks are: {ToDoList.ListAll()}");
+                            Console.WriteLine($"Your current tasks are: \n{ToDoList.ListAll()}");
                             while (answer == 'y')
                             {
                                 Console.WriteLine("Please type in what you want to add: ");
@@ -68,7 +70,11 @@ namespace ToDoConsoleApp
                         else if (option == 2)
                         {
                             Console.Clear();
-                            Console.WriteLine($"You're tasks are below: \n{ToDoList.ListAll()}"); 
+                            Console.WriteLine($"You're tasks are below: ");
+                            
+                            Console.WriteLine(ToDoList.ListAll());
+                            
+                            (left , bot) = Console.GetCursorPosition();
                         }
                             
                         break;

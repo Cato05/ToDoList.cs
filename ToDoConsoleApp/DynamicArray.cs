@@ -114,24 +114,25 @@ namespace ToDoConsoleApp
         public string ListAll()
         {
             string DevString = string.Empty;
-            string String = string.Empty;
+            string UserString = string.Empty;
 
             for(int i = 0; i < size; i++)
             {
                 DevString += array[i] + ", ";
-                String += array[i] + "\n";
+                UserString += array[i] + "\n";
+                
             }
-            if (DevString != string.Empty || String != string.Empty)
+            if (DevString != string.Empty || UserString != string.Empty)
             {
-                String = String.Substring(0, String.Length - 1);
+                UserString = UserString.Substring(0, UserString.Length - 1);
                DevString = '[' + DevString.Substring(0, DevString.Length - 2) + ']'; //Removing the comma, from the end, adding '[' and ']'
             }
             else
             {
                DevString = "[]";
-               String = "[]";
+                UserString = "[]";
             }
-            return String;
+            return UserString;
         }
 
 
