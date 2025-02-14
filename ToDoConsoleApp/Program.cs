@@ -23,6 +23,10 @@ namespace ToDoConsoleApp
             int min = 1; //If there are tasks, 1, otherwise 0
             (int left, int bot) = Console.GetCursorPosition();
             (int top, int right) = Console.GetCursorPosition();
+            string[] options = ["Add task", "See tasks", "Back"];
+            string writeOutOpt1 = options[0];
+            string writeOutOpt2 = options[1];
+            string writeOutOpt3 = "";
 
             while (!done)
             {
@@ -30,13 +34,15 @@ namespace ToDoConsoleApp
 
                 Thread.Sleep(100);
                 Console.SetCursorPosition(right, bot);
-                Console.WriteLine($" {(option == 1 ? marking : "")}Add a task\u001b[0m");
-                Console.WriteLine($" {(option == 2 ? marking : "")}See tasks\u001b[0m");
+                Console.WriteLine($" {(option == 1 ? marking : "")} {writeOutOpt1}\u001b[0m");
+                Console.WriteLine($" {(option == 2 ? marking : "")} {writeOutOpt2}\u001b[0m");
+                Console.WriteLine($" {(option == 3 ? marking : "")} {writeOutOpt3}\u001b[0m");
 
                 key = Console.ReadKey(true);
 
                 switch (key.Key)
                 {
+                
                     case ConsoleKey.UpArrow:
                         option--;
                         break;
@@ -46,6 +52,8 @@ namespace ToDoConsoleApp
                         break;
 
                     case ConsoleKey.Enter:
+                        min = 1;
+                        max = 3;
                         if (option == 1)
                         {
                             char answer = 'y';
@@ -72,16 +80,30 @@ namespace ToDoConsoleApp
                         else if (option == 2)
                         {
                             Console.Clear();
-                            Console.WriteLine($"You're tasks are below: ");
+                            Console.WriteLine($"You're tasks are below, press esc, to go back: ");
                             string[] tasks = ToDoList.ListAll().Split(" ");
+                            int opts = 0;
                             for (int i = 0; i < tasks.Length; i++)
                             {
-                                Console.WriteLine(tasks[i]);
+                                Console.WriteLine($" {(option == i ? marking : "")}{tasks[i]}\u001b[0m");
+                                
                             }
                             (left, bot) = Console.GetCursorPosition();
                             
+                            writeOutOpt1 = "";
+                            writeOutOpt2 = "";
+                            option = 3;
+                            writeOutOpt3 = options[2];
+                            min = 3;
+                            max = 3;                            
                         }
-                            
+
+                        
+                        else if (option == 3)
+                        {
+                            break;
+                        }
+
                         break;
 
                     case ConsoleKey.Escape:
