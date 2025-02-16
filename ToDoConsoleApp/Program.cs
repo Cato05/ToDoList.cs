@@ -21,13 +21,55 @@ namespace ToDoConsoleApp
 
         }
 
+        static void WelcomeMessage(string? message1, string? message2)
+        {
+            int FinalLength = (message1.Length > message2.Length ? message1.Length : message2.Length) + 4;
+
+            for(int i = 0; i < FinalLength; i++)
+            {
+                Console.Write('#');
+            }
+            Console.WriteLine("");
+            Console.Write('#');
+            for (int i = 0; i < FinalLength / 4; i++)
+            {
+                Console.Write(' ');
+            }
+            Console.Write(message1);
+            for (int i = 0; i < (FinalLength / 4) + 7; i++)
+            {
+                Console.Write(' ');
+            }
+            Console.Write('#');
+            Console.WriteLine("");
+            for (int i = 0; i < FinalLength; i++)
+            {
+                Console.Write("#");
+            }
+
+           
+            Console.WriteLine("");
+            Console.Write('#');
+            Console.Write(' ');
+            Console.Write(message2);
+            Console.Write(' ');
+            Console.Write('#');
+            Console.WriteLine("");
+            for (int i = 0; i < FinalLength; i++)
+            {
+                Console.Write("#");
+            }
+
+        }
+
 
         static void Main(string[] args)
         {
 
             DynamicArray ToDoList = new DynamicArray();
-            Console.WriteLine("Welcome to your To-Do list!\n Navigate with arrows, press enter to select! Press escape to exit.");
-            string ToDoFile = "../../../ToDo/To-DoList.txt";
+            string welcomeMessage1 = "Welcome to your To-Do list!";
+            string welcomeMessage2 = "Navigate with arrows, press enter to select! Press escape to exit.";
+            WelcomeMessage(welcomeMessage1, welcomeMessage2);
             ConsoleKeyInfo key; 
             int option = 1;
             bool done = false; //Checks if user is done with checking the list
@@ -55,12 +97,21 @@ namespace ToDoConsoleApp
                 if (!firstTimeInMainMenu && isMainMenu)
                 {
                     Console.Clear();
-                    Console.WriteLine("This is a beutifull MainMenu :)");
+                    Console.WriteLine("#########################################"); //41
+                    Console.WriteLine("#                                       #");
+                    Console.WriteLine("#    This is a beutifull MainMenu :)    #");
+                    Console.WriteLine("#                                       #");
+                    Console.WriteLine("#                                       #");
                     writeOutOpt3 = "";
                 }
-                Console.WriteLine($" {(option == 1 ? marking : "")} {writeOutOpt1}\u001b[0m");
-                Console.WriteLine($" {(option == 2 ? marking : "")} {writeOutOpt2}\u001b[0m");
-                Console.WriteLine($" {(option == 3 ? marking : "")} {writeOutOpt3}\u001b[0m");
+                Console.WriteLine("\n");
+                Console.WriteLine("#########################################");
+                Console.WriteLine($"# {(option == 1 ? marking : "")} {writeOutOpt1}\u001b[0m ");
+                Console.WriteLine("#                                       #");
+                Console.WriteLine($"# {(option == 2 ? marking : "")} {writeOutOpt2}\u001b[0m ");
+                Console.WriteLine("#                                       #");
+                Console.WriteLine($"# {(option == 3 ? marking : "")} {writeOutOpt3}\u001b[0m ");
+                Console.WriteLine("#########################################");
 
                 key = Console.ReadKey(true);
 
